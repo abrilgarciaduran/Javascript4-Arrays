@@ -32,22 +32,22 @@ const milQuinientos = inventors.filter(inventor => {
         return true
     }
 })
-// console.log('This inventors were born in the 1500s')
-// console.table(milQuinientos)
+console.log('This inventors were born in the 1500s')
+console.table(milQuinientos)
 
 // Array.prototype.map()
 // 2. Give us an array of the inventors first and last names
 const fullName = inventors.map(inventor => {
     return (inventor.first + " " + inventor.last)
 })
-// console.log('This are the inventors full names')
-// console.table(ordefullNamered)
+console.log('This are the inventors full names')
+console.table(fullName)
 
 // Array.prototype.sort()
 // 3. Sort the inventors by birthdate, oldest to youngest
 const ordered = inventors.sort((a, b) => a.year > b.year ? 1 : -1)
-// console.log('Here are the inventors ordered oldest to youngest')
-// console.table(ordered)
+console.log('Here are the inventors ordered oldest to youngest')
+console.table(ordered)
 
 // Array.prototype.reduce()
 // 4. How many years did all the inventors live all together?
@@ -61,7 +61,7 @@ for (var i = 0; i < inventors.length; i++) {
 const allLivedYears2 = inventors.reduce((total, inventor) => {
     return total + (inventor.passed - inventor.year);
 }, 0);
-// console.log(`Entre todos han vivido ${allLivedYears2} años`)
+console.log(`Entre todos han vivido ${allLivedYears2} años`)
 
 
 // 5. Sort the inventors by years lived
@@ -74,13 +74,35 @@ console.log('Ordenados desde el que mas años vivio hasta que menos años vivio'
 console.log(sortedByYearsLived)
 
 // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
-// https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
-
+// Written while inspecting this page https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+// const category = document.querySelector('.mw-category');
+// const links = Array.from(category.querySelectorAll('a'));
+// const boulevards = links
+//     .map(link => link.textContent)
+//     .filter(streatName => streatName.includes('de'))
 
 // 7. sort Exercise
 // Sort the people alphabetically by last name
+const alfabeticamente = people.sort((a, b) => {
+    const [aLast, aFirst] = a.split(', ');
+    const [bLast, bFirst] = b.split(', ');
+    return aLast > bLast ? 1 : -1;
+});
+console.log("Aqui están las personas ordenadas alfabeticamente: " + alfabeticamente);
+
 
 // 8. Reduce Exercise
 // Sum up the instances of each of these
 const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck'];
+
+const transportes = data.reduce(function (counting, item) {
+    if (!counting[item]) { //Si aun no esta, lo agrega
+        counting[item] = 0;
+    }
+    counting[item]++; //Si esta, le suma uno
+    return counting;
+}, {});
+
+console.log("En el array de transportes hay: ");
+console.log(transportes)
 
